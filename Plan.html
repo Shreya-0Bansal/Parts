@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts Revenue Card</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Plan.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-actions">
+                <span class="actions-count">
+                    <i class="fa fa-hourglass-half"></i> 2 Tasks | 09 Actions
+                </span>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button class="add-plan-btn" id="openAddPlanModal">
+                <span class="plus">+</span>
+                Add plan
+            </button>
+            <button class="dropdown-btn">
+                <div class="arrow"></div>
+            </button>
+        </div>
+        
+        <div class="card-title">Parts Revenue</div>
+        <div class="revenue">₹ 46,120 cr</div>
+        <div class="breakdown">
+            <div class="breakdown-item">
+                <p class="breakdown-amount">₹ 41.20 cr</p>
+                <p class="breakdown-performance">Base Performance</p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-circle">
+                    <svg viewBox="0 0 100 100">
+                      <circle class="bg" cx="50" cy="50" r="40"></circle>
+                      <circle class="fg parts" cx="50" cy="50" r="40"></circle>
+                      <circle class="fg labor" cx="50" cy="50" r="40"></circle>
+                    </svg>
+                    <div class="progress-value">58.5%</div>
+                </div>
+                
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #d3ab6d;"></div>
+                        <span>Parts</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #54c7fc;"></div>
+                        <span>Labor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value growth">11.9%</div>
+                <div class="metric-label">Growth</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value average">9.20%</div>
+                <div class="metric-label">Regional average</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value average">8.50%</div>
+                <div class="metric-label">City average</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Plan Modal -->
+    <div class="modal-overlay" id="addPlanModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">Add plan</div>
+                <div class="modal-close" id="closeAddPlanModal">×</div>
+            </div>
+            <!-- <div class="modal-body">
+                <div class="category-label">Labor Revenue</div>
+                
+                <div class="form-group">
+                    <label class="form-label">Title</label>
+                    <div class="form-select form-control">
+                        Grow Labor Revenue to ₹50Cr
+                        <span class="form-select-icon">▼</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <div class="form-control" style="min-height: 40px; color: #555; font-size: 13px;">
+                        Achieve a 17.5% increase over current ₹ 32.44Cr performance
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Target</label>
+                    <input type="text" class="form-control" value="₹50Cr">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Target completion date</label>
+                    <div class="date-input">
+                        <input type="text" class="form-control" value="30/05/2025">
+                        <span class="calendar-icon">📅</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Assign to</label>
+                    <div class="form-select form-control">
+                        COO
+                        <span class="form-select-icon">▼</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Auto-reminder</label>
+                    <div class="switch-container">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <div>
+                            <span style="font-size: 14px;">On</span>
+                            <span style="font-size: 14px; color: #aaa; margin-left: 15px;">Off</span>
+                        </div>
+                    </div>
+                    <div class="reminder-text">
+                        <div class="days-select">5 Days ▼</div>
+                        <div style="color: #555; font-size: 14px;">before due date</div>
+                    </div>
+                </div>
+            </div> -->
+            <form class="modal-body">
+                <div class="category-label">Labor Revenue</div>
+                
+                <div class="form-group">
+                    <label for="title" class="form-label">Title</label>
+                    <select id="title" class="form-select form-control">
+                        <option>Grow Labor Revenue to ₹50Cr</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" class="form-control" style="min-height: 40px; color: #555; font-size: 13px;" readonly>Achieve a 17.5% increase over current ₹ 32.44Cr performance</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="target" class="form-label">Target</label>
+                    <input type="text" id="target" class="form-control" placeholder="₹50Cr">
+                </div>
+                
+                <div class="form-group">
+                    <label for="completion-date" class="form-label">Target completion date</label>
+                    <div class="date-input">
+                        <input type="date" id="completion-date" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="assign-to" class="form-label">Assign to</label>
+                    <select id="assign-to" class="form-select form-control">
+                        <option>COO</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="auto-reminder" class="form-label">Auto-reminder</label>
+                    <div class="switch-container">
+                        <label class="switch">
+                            <input type="checkbox" id="auto-reminder" checked onchange="toggleReminderText()">
+                            <span class="slider"></span>
+                        </label>
+                        <div>
+                            <span id="reminder-status-on" style="font-size: 14px;">On</span>
+                            <span id="reminder-status-off" style="font-size: 14px; color: #aaa; margin-left: 15px;">Off</span>
+                        </div>
+                    </div>
+                    <div class="reminder-text">
+                        <select id="reminder-days" class="form-control2">
+                            <option value="5">5 Days</option>
+                            <option value="7">7 Days</option>
+                            <option value="10">10 Days</option>
+                            <option value="15">15 Days</option>
+                            <option value="30">30 Days</option>
+                        </select>
+                        <div style="color: #555; font-size: 14px;">before due date</div>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="modal-body" style="border-top: 1px solid #f0f0f0; background-color: #f9f9f9; padding-bottom: 24px;">
+                <div class="form-group">
+                    <label class="form-label">Attachment <span style="color: #aaa; font-weight: normal;">(Optional)</span></label>
+                    <div class="attachment-pill">
+                        <span class="attachment-icon">📎</span>
+                        <span class="attachment-name">Q1 2025 Report</span>
+                        <span class="attachment-close">×</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-row">
+                        <div class="info-label">Current performance:</div>
+                        <div class="info-value">32.44 Cr</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Created date:</div>
+                        <div class="info-value">26/03/2025</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Created by:</div>
+                        <div class="info-value">Dealer owner<br>(Mr. Sanjay Sinha)</div>
+                    </div>
+         
+                
+                <div class="insights-section">
+                    <div class="insights-header">Linked Insights card:</div>
+                    
+                    <div class="card">
+                        <div class="card-title">Parts Revenue</div>
+                        <div class="revenue">₹ 46,120 cr</div>
+                        <div class="breakdown">
+                            <div class="breakdown-item">
+                                <p class="breakdown-amount">₹ 41.20 cr</p>
+                                <p class="breakdown-performance">Base Performance</p>
+                            </div>
+                            
+                            <div class="progress-container">
+                                <div class="progress-circle">
+                                    <svg viewBox="0 0 100 100">
+                                      <circle class="bg" cx="50" cy="50" r="40"></circle>
+                                      <!-- Parts (e.g., 40%) -->
+                                      <circle class="fg parts" cx="50" cy="50" r="40"></circle>
+                                      <!-- Labor (e.g., 18.5%) -->
+                                      <circle class="fg labor" cx="50" cy="50" r="40"></circle>
+                                    </svg>
+                                    <div class="progress-value">58.5%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-value growth">11.9%</div>
+                                <div class="metric-label">Growth</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value average">9.20%</div>
+                                <div class="metric-label">Regional average</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value average">8.50%</div>
+                                <div class="metric-label">City average</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-cancel" id="cancelAddPlan">Cancel</button>
+                    <button class="btn btn-submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const partsPercentage = 40;
+            const laborPercentage = 18.5;
+            const totalPercentage = partsPercentage + laborPercentage;
+            
+            const partsSVG = document.querySelector('.progress-circle .parts');
+            const laborSVG = document.querySelector('.progress-circle .labor');
+            const radius = partsSVG.getAttribute('r');
+            const circumference = 2 * Math.PI * radius;
+            
+            const partsOffset = circumference * (1 - partsPercentage / 100);
+            const laborOffset = circumference * (1 - laborPercentage / 100);
+            
+            partsSVG.style.strokeDasharray = `${circumference} ${circumference}`;
+            partsSVG.style.strokeDashoffset = partsOffset;
+            
+            laborSVG.style.strokeDasharray = `${circumference} ${circumference}`;
+            laborSVG.style.strokeDashoffset = laborOffset;
+            
+            // Modal functionality
+            const modal = document.getElementById('addPlanModal');
+            const openModalBtn = document.getElementById('openAddPlanModal');
+            const closeModalBtn = document.getElementById('closeAddPlanModal');
+            const cancelBtn = document.getElementById('cancelAddPlan');
+            
+            openModalBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+            });
+            
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+            
+            closeModalBtn.addEventListener('click', closeModal);
+            cancelBtn.addEventListener('click', closeModal);
+            
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+
+        function toggleReminderText() {
+        const isChecked = document.getElementById('auto-reminder').checked;
+        const onText = document.getElementById('reminder-status-on');
+        const offText = document.getElementById('reminder-status-off');
+
+        if (isChecked) {
+            onText.style.color = '#555';
+            offText.style.color = '#aaa';
+        } else {
+            onText.style.color = '#aaa';
+            offText.style.color = '#555';
+        }
+    }
+    window.onload = toggleReminderText;
+    </script>
+</body>
+</html>
